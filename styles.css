@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-board{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 50%;
+    background-color: red;
+}
+
+.main-line{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+
+}
+
+#square{
+background-attachment: black;
+}

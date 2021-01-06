@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>El gato</title>
+</head>
+<body>
+    <main>
+        <label>Select board size:</label>
+        <!-- <select onchange="onSelectSize(this)">
+            <option>Select value</option>
+            <option value="3x3">3x3</option>
+            <option value="9x9">9x9</option>
+            <option value="18x18">18x18</option>
+        </select> -->
+        <input onchange="onSelectSize(this)" id="selected-value">
+        <button onclick="getBoard()">GO!</button>
+        <div class="main-board" id="main-board">
+
+        </div>
+    </main>
+</body>
+<script src='./main.js'></script>
+</html>
