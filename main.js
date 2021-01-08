@@ -72,14 +72,16 @@ const onGameLogic = (e) => {
           return;
         } else {
           if (player === "Player1") {
-            gameLogic[row][col] = 0;
+            gameLogic[row][col] = false;
+            
+            declareWinner(gameLogic, player);
             player = "Player2";
-            declareWinner(gameLogic, row, col);
           } else if (player === "Player2") {
-            gameLogic[row][col] = 1;
-            player = "Player1";
+            gameLogic[row][col] = true;
+            
 
-            declareWinner(gameLogic, row, col);
+            declareWinner(gameLogic, player);
+            player = "Player1";
           }
         }
       }
@@ -87,27 +89,84 @@ const onGameLogic = (e) => {
   }
 };
 
-const declareWinner = (arr, row, col) => {
-console.log(gameLogic)
-  
 
-  for (let i = 0; i <= arr.length -1; i++) {
-    for (let j = 0; j <= arr.length - 1; j++) {
-        // verticales
-      if (arr[i - 1] !== undefined && arr[i + 1] !== undefined) {
-        if (arr[i + 1][j] == 0 && arr[i - 1][j] == 0) {
-          console.log("gano el jugador 1");
-        }
+const declareWinner = (arr, player) => {
+  console.log(arr,' arreglo')
+  let counterHorizontalF = 0;
+  let counterHorizontalT = 0;
+  let counterVerticalF = 0;
+  let counterVerticalT = 0;
+  let counterDiagonalLF = 0;
+  // diagonal primera
+  for(let i = 0; i <= arr.length - 1; i++){
+    if(i === i){
+      if(arr.length - 1 == i && arr[i][i] == false){
+        console.log('gano ' + player, i)
+      } else if (arr.length - 1 == i && arr[i][i] == true){
+        console.log('gano ' + player, i)
       }
-      // horizontales
-      if (arr[i][j - 1] !== undefined && arr[i][j + 1] !== undefined) {
-        if (arr[i][j + 1] == 0 && arr[i][j - 1] == 0) {
-          console.log("gano el jugador 1");
-        }
-      }
-      // TODO diagonal
     }
   }
+  
+
+  // horizontales
+  for(let i=0; i <= arr.length - 1; i++){
+    for(let j=0; j <= arr.length -1; j++){
+      if(arr[i][j] == false){
+        counterHorizontalF += 1
+        console.log(arr.length, counterHorizontalF, 'contador')
+        counterHorizontalF === arr.length ? console.log('gano el jugador 1'): null
+      } else {
+        counterHorizontalF = 0;
+      }
+      if(arr[i][j] == true){
+        counterHorizontalT += 1
+        console.log(arr.length, counterHorizontalT, 'contador')
+        counterHorizontalT === arr.length ? console.log('gano el jugador 2'): null
+      } else {
+        counterHorizontalT = 0;
+      }
+    }
+  }
+
+  // verticales
+  for(let i=0; i <= arr.length - 1; i++){
+    for(let j=0; j <= arr.length -1; j++){
+      if(arr[j][i] == false){
+        counterVerticalF += 1
+        console.log(arr.length, counterVerticalF, 'contador')
+        counterVerticalF === arr.length ? console.log('gano el jugador 1 ' ): null
+      } else {
+        counterVerticalF = 0;
+      }
+      if(arr[j][i] == true){
+        counterVerticalT += 1
+        console.log(arr.length, counterVerticalT, 'contador')
+        counterVerticalT === arr.length ? console.log('gano el jugador 2 '): null
+      } else {
+        counterVerticalT = 0;
+      }
+    }
+  }
+
+  
+
+    // for (let j = 0; j <= arr.length - 1; j++) {
+    //     // verticales
+    //   if (arr[i - 1] !== undefined && arr[i + 1] !== undefined) {
+    //     if (arr[i + 1][j] == 0 && arr[i - 1][j] == 0) {
+    //       console.log("gano el jugador 1");
+    //     }
+    //   }
+    //   // horizontales
+    //   if (arr[i][j - 1] !== undefined && arr[i][j + 1] !== undefined) {
+    //     if (arr[i][j + 1] == 0 && arr[i][j - 1] == 0) {
+    //       console.log("gano el jugador 1");
+    //     }
+    //   }
+    //   // TODO diagonal
+    // }
+  
 
 };
 
